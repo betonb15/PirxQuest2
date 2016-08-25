@@ -12,12 +12,13 @@
 		var StartTime = new Date();
 						
 		//Połącz z serwerem
-		PQ_Xhttp.SerwerQuery("test.php","dt=0",function(a){});
+		//PQ_Xhttp.SerwerQuery("test.php","dt=0",function(a){});
 		
 		//Pokaż kursor
 		//Mouse.DrawCursor();				
 		//Rysowanie buffora na głównej canvie
-		//PQ_DrawOutput.Draw();
+		PQ_DrawBuffor.Clear();
+		PQ_DrawOutput.Draw();
 		
 		
 		//To musi być resetowane na samym końcu pętli

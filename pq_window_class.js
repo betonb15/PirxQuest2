@@ -41,6 +41,7 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 	//////////////////////////////////////////////
 	//Okno główne
 	//Parametry prywatne
+	var paramBodyIsMinimized = false;							//Flaga dla okna zminimalizowanego
 	var paramBodyX = x;											//Położenie bezwzględne w poziomie licząc od lewej krawędzi ekranu
 	var paramBodyY = y;											//Położenie bezwzględne w pionie licząc od górnej krawędzi ekranu
 	var paramBodyWidth = w;										//Szerokość okna
@@ -159,7 +160,7 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 	this.windowBody.style.padding = "0px";
 	this.windowBody.style.overflowX = "hidden";
 	this.windowBody.style.overflowY = "hidden";		
-	this.windowBody.style.zIndex = 1;
+	this.windowBody.style.zIndex = 2;
 	//Odwołanie do instancji obiektu
 	this.windowBody.PQwindow = this;
 	
@@ -226,6 +227,7 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 			this.PQwindow.bodyWidth(paramBodyLastWidth);
 			this.PQwindow.windowContent.style.display = "block";
 			this.PQwindow.windowResizer.style.display = "block";
+			paramBodyIsMinimized = false;
 		}else{
 			paramBodyLastHeight = this.PQwindow.bodyHeight(undefined);
 			paramBodyLastWidth = this.PQwindow.bodyWidth(undefined);
@@ -233,6 +235,7 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 			this.PQwindow.bodyWidth(paramBodyMinWidth);			
 			this.PQwindow.windowContent.style.display = "none";
 			this.PQwindow.windowResizer.style.display = "none";
+			paramBodyIsMinimized = true;
 		}	
 	}
 	this.windowHead.mouseDown = function(){
@@ -243,8 +246,8 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 		this.PQwindow.bodyY(this.PQwindow.bodyY(undefined)+dY);
 	}
 	//Zdarzenia
-	this.PQcontrolInputs.mouseAddEvent("dblclick",this.windowHead,function(){this.dblClick();});
-	this.PQcontrolInputs.mouseAddEvent("mousedown",this.windowHead,function(){this.mouseDown();});
+	this.PQcontrolInputs.addEvent("dblclick",this.windowHead,function(){this.dblClick();});
+	this.PQcontrolInputs.addEvent("mousedown",this.windowHead,function(){this.mouseDown();});
 	
 	//////////////////////////////////////////////
 	//Resizer okna
@@ -274,11 +277,11 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 	}	
 	this.windowResizer.draging = function(dX,dY){
 		if((this.PQwindow.bodyWidth(undefined)+dX)>paramBodyMinWidth){this.PQwindow.bodyWidth(this.PQwindow.bodyWidth(undefined)+dX);}
-		if((this.PQwindow.bodyHeight(undefined)+dX)>paramBodyMinHeight){this.PQwindow.bodyHeight(this.PQwindow.bodyHeight(undefined)+dY);}
+		if((this.PQwindow.bodyHeight(undefined)+dY)>paramBodyMinHeight){this.PQwindow.bodyHeight(this.PQwindow.bodyHeight(undefined)+dY);}
 	}	
 	//Zdarzenia
-	//this.PQcontrolInputs.mouseAddEvent("dblclick",this.windowResizer,function(){this.dblClick();});
-	this.PQcontrolInputs.mouseAddEvent("mousedown",this.windowResizer,function(){this.mouseDown();});
+	//this.PQcontrolInputs.addEvent("dblclick",this.windowResizer,function(){this.dblClick();});
+	this.PQcontrolInputs.addEvent("mousedown",this.windowResizer,function(){this.mouseDown();});
 	
 	//////////////////////////////////////////////
 	//Treści okna
@@ -305,10 +308,10 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 	this.windowContent.PQwindow = this;	
 	//Metody publiczne
 	this.windowContent.showText = function(str){
-		this.innerHTML = str;
+		if(!paramBodyIsMinimized){this.innerHTML = str;}
 	}
 	this.windowContent.addLine = function(str){
-		this.inneHTML =+ str;
+		if(!paramBodyIsMinimized){this.innerHTML = str+"<br/>"+this.innerHTML;}
 	}
 	
 }

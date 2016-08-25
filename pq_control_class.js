@@ -31,7 +31,7 @@
 			return (this.mouseY - this.mouseLastY);
 		}
 		
-		this.mouseAddEvent = function(eventName,input,execute){
+		this.addEvent = function(eventName,input,execute){
 			input.PQcontrolInputs = this;
 			input.addEventListener(eventName,execute)
 		}		
@@ -44,6 +44,13 @@
 				str += "<br/>Cursor wskazuje: "+event.target.id;
 				input.PQcontrolInputs.mouseDebugOutput.showText(str);				
 			}
+		}
+		this.mouseDrawCursor = function(output){
+			output.beginPath();
+			output.strokeStyle="#FF0000";
+			output.lineWidth=3;
+			output.arc(this.mouseX,this.mouseY,5,0,2*Math.PI);
+			output.stroke();
 		}
 		this.mouseMove = function(input){
 			input.PQcontrolInputs.mouseLastX = input.PQcontrolInputs.mouseX;
@@ -100,10 +107,26 @@
 			}
 			input.PQcontrolInputs.mouseGetStatus(input);			
 		}
+	
+		this.keyboardGetStatus = function(input){
+			if((input.PQcontrolInputs.keyboardDebugOutput!==undefined)&&((input.PQcontrolInputs.keyboardDebugOutput.showText!==undefined))){
+				input.PQcontrolInputs.keyboardDebugOutput.addLine(input.PQcontrolInputs.keyboardKeyPressed);				
+			}
+		}		
+		this.keyboardKyeDown = function(input){
+			input.PQcontrolInputs.keyboardKeyPressed = event.key;
+			input.PQcontrolInputs.keyboardGetStatus(input);
+		}
+		this.keyboardKyeUp = function(input){
+			input.PQcontrolInputs.keyboardKeyPressed = '';
+			//input.PQcontrolInputs.keyboardGetStatus(input);
+		}
 		
-		//Podpięcie zdarzeń myszy
-		this.mouseAddEvent("mousemove",document.querySelector('body'),function(){document.querySelector('body').PQcontrolInputs.mouseMove(this);});
-		this.mouseAddEvent("mousedown",document.querySelector('body'),function(){document.querySelector('body').PQcontrolInputs.mouseDown(this);});
-		this.mouseAddEvent("mouseup",document.querySelector('body'),function(){document.querySelector('body').PQcontrolInputs.mouseUp(this);});
-		this.mouseAddEvent("mousewheel",document.querySelector('body'),function(){document.querySelector('body').PQcontrolInputs.mouseWheel(this);});		
+		//Podpięcie zdarzeń myszy i klawiatury do głownego elementu Master_DIV
+		this.addEvent("mousemove",PQ_MasterDiv,function(){PQ_MasterDiv.PQcontrolInputs.mouseMove(this);});
+		this.addEvent("mousedown",PQ_MasterDiv,function(){PQ_MasterDiv.PQcontrolInputs.mouseDown(this);});
+		this.addEvent("mouseup",PQ_MasterDiv,function(){PQ_MasterDiv.PQcontrolInputs.mouseUp(this);});
+		this.addEvent("mousewheel",PQ_MasterDiv,function(){PQ_MasterDiv.PQcontrolInputs.mouseWheel(this);});		
+		this.addEvent("keydown",PQ_MasterDiv,function(){PQ_MasterDiv.PQcontrolInputs.keyboardKyeDown(this);});		
+		this.addEvent("keyup",PQ_MasterDiv,function(){PQ_MasterDiv.PQcontrolInputs.keyboardKyeUp(this);});		
 	}
