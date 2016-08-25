@@ -15,7 +15,6 @@
 <body>
 	<script src="pq_master_div.js"></script>
 	<script src="pq_control_class.js"></script>
-	<script src="pq_window2_class.js"></script>
 	<script src="pq_window_class.js"></script>
 	<script src="pq_prepare_game.js"></script>
 	<script src="pq_ajax_function.js"></script>

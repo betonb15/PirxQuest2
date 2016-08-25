@@ -107,6 +107,3 @@
 		this.mouseAddEvent("mouseup",document.querySelector('body'),function(){document.querySelector('body').PQcontrolInputs.mouseUp(this);});
 		this.mouseAddEvent("mousewheel",document.querySelector('body'),function(){document.querySelector('body').PQcontrolInputs.mouseWheel(this);});		
 	}
-
-	//Stworzenie obiektu input
-	//new PQcontrolInputs(undefined,undefined);

@@ -30,12 +30,5 @@
 	
 ////////////////////////////////////////////
 //START
-	
-	new Particle('ship',2,'smoke1',0,0,0,0,0,0,0,0,0,1,0,10,10,1000,1);
-	new Particle('ship',2,'smoke1',0,0,0,0,0,0,0,0,0,1,0,10,10,1000,1);
-	new Particle('server',2,'ship1_all',0,0,0,0,0,0,0,0,0,1,0,10,10,1000,1);
-	new Particle('server',2,'ship1_all',0,0,0,0,0,0,0,0,0,1,0,10,10,1000,1);
-	new Particle('client',2,'missile1',0,0,0,0,0,0,0,0,0,1,0,10,10,1000,1);
-	new Particle('client',2,'missile1',0,0,0,0,0,0,0,0,0,1,0,10,10,1000,1);
-	
+		
 	PQ_GameLoop = setInterval(Redraw,1000/PQ_MaxFrameRate);

@@ -1,7 +1,7 @@
 ////////////////////////////////////////////
 //ZMIENNE GLOBALNE- MASTER DIV
 
-	var PQ_MasterDiv = {}		//Nadrzędny element tworzący div z interfacem, jedyna zmienna zerwnętrzna
+	var PQ_MasterDiv = {}		//Nadrzędny element tworzący div z interfacem, jedyna zmienna zewnętrzna
 
 //Inicjalizacja
 	

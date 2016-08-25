@@ -1,6 +1,6 @@
 ////////////////////////////////////////////
 //ZMIENNE GLOBALNE
-	var PQ_Version = "0.2.0.0";									//Wersja gry
+	var PQ_Version = "0.2.0.1";									//Wersja gry
 	var PQ_Inputs = new PQcontrolInputs(undefined,undefined);	//Inicjalizacja myszki i klawiatury
 
 ////////////////////////////////////////////
@@ -52,8 +52,7 @@
 	//Tworzenie okien
 	
 	var Okno1 = new PQwindow(document.body,50,100,300,400,"OKNO TESTOWE 1",document.body.PQcontrolInputs);
-	var Okno2 = new PQwindow(document.body,550,100,300,400,"OKNO TESTOWE 2",document.body.PQcontrolInputs);
-	document.querySelector('body').PQcontrolInputs.mouseDebugOutput = Okno1.windowContent;
+	document.body.PQcontrolInputs.mouseDebugOutput = Okno1.windowContent;
 	
 	
 	//Przywitanie

@@ -24,7 +24,7 @@ function color(R,G,B){
 ////////////////////////////////////////////
 //Klasa pq_window2_class
 
-var PQWindowId = 10;		//Unikatowy przedrostek dla nowego okna
+var PQWindowId = 1;											//Unikatowy przedrostek dla nowego okna
 
 function PQwindow(windowParent,x,y,w,h,title,control){
 	//////////////////////////////////////////////
@@ -52,7 +52,7 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 	var paramBodyBorderWidth = 5;								//Szerokość obramowania
 	var paramBodyBorderStyle = "solid";							//Styl obramowania
 	var paramBodyBorderColor = new color(79,129,189);			//Kolor obramowania
-	var paramBodyBackgroundColor = new color(-255,255,255);			//Kolor tła	
+	var paramBodyBackgroundColor = new color(-255,255,255);		//Kolor tła	
 	
 	var paramContentBackgroundColor = new color(255,255,255);	//Kolor tła zawartości okna
 	var paramContentFontColor = new color(0,0,0);				//Kolor czcionki zawartości okna
@@ -265,7 +265,7 @@ function PQwindow(windowParent,x,y,w,h,title,control){
 	this.windowResizer.style.width = "10px";		
 	this.windowResizer.style.height = "10px";		
 	this.windowResizer.style.cursor = "nwse-resize";
-	this.windowResizer.style.backgroundColor = "red";
+	this.windowResizer.style.backgroundColor = "none";
 	//Odwołanie do instancji obiektu
 	this.windowResizer.PQwindow = this;	
 	//Metody publiczne DOM

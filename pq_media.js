@@ -48,7 +48,7 @@ function Sound(src) {
 	}    
 }
 
-var SN_Default = new Sound('sounds/none.mp3');
+/*var SN_Default = new Sound('sounds/none.mp3');
 
 var SN_MissileStart1 = new Sound('sounds/missilestart1.mp3');
 var SN_MissileStart2 = new Sound('sounds/missilestart2.mp3');
@@ -72,7 +72,7 @@ var SN_GunFire8 = new Sound('sounds/gunfire8.mp3');
 
 var SN_LaserFire1 = new Sound('sounds/laserfire1.mp3');
 var SN_Electricity1 = new Sound('sounds/electricity1.mp3');
-var SN_Electricity2 = new Sound('sounds/electricity2.mp3');
+var SN_Electricity2 = new Sound('sounds/electricity2.mp3');*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //TEKSTURY
